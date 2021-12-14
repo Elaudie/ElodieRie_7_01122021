@@ -86,6 +86,7 @@ exports.desactivateAccount = (req, res) => {
   const userId = req.params.id;
   const sql = `UPDATE users SET active=0 WHERE user_id`;
   db.query(sql, userId, (err, results) => {
+    console.log(err)
     if (err) {
       return res.status(404).json({ err });
     }

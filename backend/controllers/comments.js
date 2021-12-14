@@ -28,7 +28,7 @@ exports.getOneComment = (req, res) => {
 
 exports.getAllComments = (req, res) => {
     const postId = req.params.id
-    const sql = `SELECT * FROM comments WHERE post_id = ${postId}`; //problème ici
+    const sql = `SELECT * FROM comments WHERE post_id = ${postId}`;
     db.query(sql, (err, result) => {
       if (err) {
         res.status(404).json({ err });
@@ -39,10 +39,10 @@ exports.getAllComments = (req, res) => {
   };
   
   exports.createComment = (req, res, next) => {
-    const { message, post_id, author_id, author_firstname, author_lastname } =
+    const { message, user_id } =
       req.body;
-      //pb ici
-    const sql = `INSERT INTO comments (id, post_id, author_id, author_firstname, author_lastname, message, created_at, updated_at, likes) VALUES (NULL, ${post_id}, ${author_id}, "${author_firstname}", "${author_lastname}", "${message}", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '0')`;
+    const post_id = req.params.id
+    const sql = `INSERT INTO comments (user_id, post_id, message) VALUES ( ${user_id}, ${post_id}, "${message}")`;
     db.query(sql, (err, result) => {
       if (err) {
         res.status(404).json({ err });
