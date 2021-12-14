@@ -52,3 +52,5 @@ exports.getAllComments = (req, res) => {
       res.status(200).json(result);
     });
   };
+
+  //updateComments

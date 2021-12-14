@@ -1,21 +1,3 @@
-// // Importer Express
-// const express = require('express');
-// // Créer un router
-// const router = express.Router();
-// const userCtrl = require('../controllers/user');
-
-
-// /* Router pour USER */
-// // Route pour l'inscription
-// router.post('/signup', userCtrl.signup);
-
-
-// // Route pour la connexion
-
-
-// // Exporter le router
-// module.exports = router;
-
 const express = require("express");
 const router = express.Router();
 const userCtrl = require("../controllers/user");

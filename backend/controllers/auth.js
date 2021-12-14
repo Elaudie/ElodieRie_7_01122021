@@ -15,8 +15,8 @@ exports.signup = async (req, res) => {
       ...req.body,
       user_password: encryptedPassword,
     };
-    const sql = "INSERT INTO users (user_firstname, user_lastname, user_email, user_password, active) VALUES(?, ?, ?, ?, ?)";
-    db.query(sql, [user.firstname, user.lastname, user.email, user.user_password, user.active], (err, result) => {
+    const sql = "INSERT INTO users (user_email, user_password) VALUES(?, ?, ?, ?, ?)";
+    db.query(sql, [user.email, user.user_password], (err, result) => {
       if (!result) {
         res.status(200).json({ message: "Email déjà enregistré" });
       } else {
@@ -31,7 +31,7 @@ exports.signup = async (req, res) => {
 exports.login = (req, res) => {
   //===== Check if user exists in DB ======
   const { user_email, user_password } = req.body;
-  const sql = `SELECT user_firstname, user_lastname, user_password, user_id FROM users WHERE user_email = ?`;
+  const sql = `SELECT user_password, user_id FROM users WHERE user_email = ?`;
   db.query(sql, [user_email], async (err, results) => {
     if (err) {
       return res.status(404).json({ err });

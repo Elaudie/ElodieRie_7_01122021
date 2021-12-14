@@ -28,9 +28,7 @@ exports.updateOneUser = (req, res, next) => {
     });
   }
 
-  const { user_firstname, user_lastname } = req.body;
   const { id: userId } = req.params;
-  const sqlUpdateUser = `UPDATE users SET user_firstname = "${user_firstname}", user_lastname = "${user_lastname}" WHERE user_id = ${userId};`;
   db.query(sqlUpdateUser, (err, result) => {
     if (err) {
       res.status(404).json({ err });
