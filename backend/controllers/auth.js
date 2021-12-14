@@ -79,7 +79,7 @@ exports.login = (req, res) => {
 
 exports.logout = (req, res) => {
   res.clearCookie("jwt");
-  res.status(200).json("OUT");
+  res.status(200).json("LOGOUT");
 };
 
 exports.desactivateAccount = (req, res) => {
