@@ -1,0 +1,21 @@
+@import "../styles/settings.scss";
+
+.newsfeed {
+    @include flex-center;
+    flex-direction: column;
+    width: 100% !important;
+}
+
+.container__global {
+    width: 100%;
+    @include flex-center;
+    flex-direction: column;
+    margin-bottom: 50px;
+}
+
+.transparent {
+    width: 100%;
+    @include flex-center;
+    flex-direction: column;
+    margin-bottom: 50px;
+}
