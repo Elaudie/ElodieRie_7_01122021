@@ -1,0 +1,14 @@
+@import "../../../../styles/settings.scss";
+
+.comment {
+    padding-left: 15px !important;
+    position: relative;
+    border: 1px solid rgb(209, 209, 209);
+    border-radius: 5px;
+    padding: 10px 0;
+    margin: 2px 0;
+    background: rgb(238, 238, 238);
+    }
+    &__message {
+        font-size: 14px
+    }
