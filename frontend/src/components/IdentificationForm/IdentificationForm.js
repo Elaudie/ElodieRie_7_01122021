@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import Link from "./Link/Link";
 import "./IdentificationForm.scss";
-import Tab from "./Tabs/Tab";
 import Form from "./Form/Form";
 
 const IdentificationForm = () => {

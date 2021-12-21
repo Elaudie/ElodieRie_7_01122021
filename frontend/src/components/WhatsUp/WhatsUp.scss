@@ -1,0 +1,10 @@
+@import "../../styles/settings.scss";
+
+.whats_up {
+    @include flex-center();
+    background: white;
+    border-radius: 5px;
+    padding: 10px;
+    border: solid 1px $black;
+    width: 100%;
+}
