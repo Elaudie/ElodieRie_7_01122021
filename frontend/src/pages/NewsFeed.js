@@ -1,5 +1,5 @@
 import React from "react";
-import Posts from "../components/Posts/Posts";
+import Posts from "../components/Posts/Post";
 import WhatsUp from "../components/WhatsUp/WhatsUp";
 import "./NewsFeed.scss";
 

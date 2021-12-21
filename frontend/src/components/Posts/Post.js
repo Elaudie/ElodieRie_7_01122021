@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Post from "./Post/Post";
-import "./Posts";
-import "./Posts.scss";
+import "./Post.scss";
 
 import ENDPOINTS from "../../api/endpoints";
 import { GET } from "../../api/axios";
