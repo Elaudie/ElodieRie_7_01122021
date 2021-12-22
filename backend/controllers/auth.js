@@ -15,8 +15,9 @@ exports.signup = async (req, res) => {
       ...req.body,
       user_password: encryptedPassword,
     };
-    const sql = "INSERT INTO users (user_email, user_password) VALUES(?, ?, ?, ?, ?)";
+    const sql = "INSERT INTO users (user_email, user_password) VALUES(?, ?)";
     db.query(sql, [user.email, user.user_password], (err, result) => {
+      console.log(req.body)
       if (!result) {
         res.status(200).json({ message: "Email déjà enregistré" });
       } else {
@@ -29,7 +30,7 @@ exports.signup = async (req, res) => {
 };
 
 exports.login = (req, res) => {
-  //===== Check if user exists in DB ======
+  //===== Vérifier si l'utilisateur existe déjà ======
   const { user_email, user_password } = req.body;
   const sql = `SELECT user_password, user_id FROM users WHERE user_email = ?`;
   db.query(sql, [user_email], async (err, results) => {
@@ -63,11 +64,6 @@ exports.login = (req, res) => {
       } catch (err) {
         return res.status(400).json({ err });
       }
-    } else if (results[0] && results[0].active === 0) {
-      res.status(200).json({
-        error: true,
-        message: "Votre compte a été désactivé",
-      });
     } else if (!results[0]) {
       res.status(200).json({
         error: true,
@@ -80,17 +76,4 @@ exports.login = (req, res) => {
 exports.logout = (req, res) => {
   res.clearCookie("jwt");
   res.status(200).json("LOGOUT");
-};
-
-exports.desactivateAccount = (req, res) => {
-  const userId = req.params.id;
-  const sql = `UPDATE users SET active=0 WHERE user_id`;
-  db.query(sql, userId, (err, results) => {
-    console.log(err)
-    if (err) {
-      return res.status(404).json({ err });
-    }
-    res.clearCookie("jwt");
-    res.status(200).json("DESACTIVATE");
-  });
 };
