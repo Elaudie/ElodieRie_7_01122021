@@ -9,7 +9,7 @@ function App () {
         <Router>
             <Routes>
             <Route path="/" element={<NewsFeed />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/connexion" element={<Login />} />
             </Routes>
         </Router>
     );

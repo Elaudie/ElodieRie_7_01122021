@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import "./Form.scss";
 import { POST } from "../../../api/axios";
 import ENDPOINTS from "../../../api/endpoints";
+import Button from "../Button/Button"
 
 const Form = ({ form }) => {
   const [userSignup, setUserSignup] = useState({
@@ -126,7 +127,6 @@ const Form = ({ form }) => {
     }
   };
 
-  const history = useHistory();
   const login = async (e) => {
     try {
       e.preventDefault();
